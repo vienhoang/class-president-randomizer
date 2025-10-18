@@ -1,6 +1,23 @@
 import random
 done_adding = False
-candidates, votes = [], []
+candidates, votes, outputs = [], [], []
+
+# Save the candidates and votes to file
+def save_to_file(list_result):
+    file_name = "results.txt"
+    try:
+        with open(file_name, "w") as f:
+            line = "\n".join(list_result)
+            f.write(line)
+            print(f"The results have been saved to the file: {file_name}")
+    except FileNotFoundError:
+        print("File not found.")
+    except IOError:
+        print("An I/O error occurred.")
+    except:
+        print("Something went wrong...")
+
+    f.close()
 
 while not done_adding:
 
@@ -54,27 +71,39 @@ while not done_adding:
             reverse=True so the function can sort from the highest to the lowest value
             """
             final_votes = sorted(final_votes, key=lambda x: x[1], reverse=True)
-            print(f"Final votes {final_votes}")
+            #print(f"Final votes {final_votes}")
             # Get the highest vote count
             highest_vote_count = max(final_votes, key=lambda x: x[1])
-            print(f"Highest vote count: {highest_vote_count}")
+            #print(f"Highest vote count: {highest_vote_count}")
             winner_counter = 0
-            print("-----=====FINAL RESULT=====-----")
+            print_str = "-----=====FINAL RESULT=====-----"
+            outputs.append(print_str)
+            print(print_str)
             # Loop through the final votes list, and print out the result
             for name, votes in final_votes:
                 # ('alice', 13) check if the highest vote count exist in the final votes list, add 1 to winner_counter
                 if highest_vote_count[1] == votes:
                     winner_counter += 1
-                print(f"{name}: {votes} vote(s)")
 
-            print(f"Winner count: {winner_counter}")
+                print_str = f"{name}: {votes} vote(s)"
+                outputs.append(print_str)
+                print(print_str)
+
+            #print(f"Winner count: {winner_counter}")
             if winner_counter > 1:
-                print("It's a draw between: ")
-                # Print out the draw candidates with the highest vote count
-                [print(f"{name}") for name, votes in final_votes if highest_vote_count[1] == votes]
+                print_str = "It's a draw between: "
+                outputs.append(print_str)
+                print(print_str)
+                # Print out the draw candidates with the highest vote count 
+                for name, votes in final_votes:
+                    if highest_vote_count[1] == votes:
+                        outputs.append(name)
+                        print(f"{name}")
             else: 
-                print(f"The class president is ... {highest_vote_count[0]}")
+                print_str = f"The class president is ... {highest_vote_count[0]}"
+                outputs.append(print_str)
+                print(print_str)
             
+            # Save the result to file
+            save_to_file(outputs)
             done_adding = True
-
-            # Save the candidates and votes to file
