@@ -9,23 +9,26 @@ while not done_adding:
     # Capitalize the input name 
     candidates.append(name.capitalize())
 
-    # Enter how many votes that shoud be casted
-    nbr_votes = int(input("How many votes should the program randomize? "))
-
-    # Enter the total votes in the class
-    for candidate in candidates:
-        votes.append(nbr_votes)
-        print(candidate, votes)
-    
     # Add the user for more suggestions
     add_more = str(input("Add more candidate? Yes/No "))
 
     # If no, randomize votes and save to file
-    if add_more.strip().lower() in ("no", "n"):
+    if add_more.strip().lower() in ("no", "n") and len(candidates) > 1:
+
+        # Enter how many votes that shoud be casted
+        nbr_votes = int(input("How many votes should the program randomize? "))
+
+        # Loop through the number of votes, add 1 vote randomally in each votes element
+        # Enter the total votes in the class
+        for r in range(0, nbr_votes):
+            vote = 1
+            votes_element = random.randint(0, len(candidates)) 
+            votes[votes_element] += vote
+
         print("Inside no")
         done_adding = True
 
         # Save the cast votes to file
 
 
-    print(candidates)
+    print(candidates, votes)
