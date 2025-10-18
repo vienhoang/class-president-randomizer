@@ -4,7 +4,7 @@ candidates, votes = [], []
 
 while not done_adding:
 
-    # input field for class captain suggestions
+    # Input field for class captain suggestions
     name = str(input("Suggest a candidate for class president: "))
     # Capitalize the input name 
     candidates.append(name.capitalize())
@@ -54,12 +54,27 @@ while not done_adding:
             reverse=True so the function can sort from the highest to the lowest value
             """
             final_votes = sorted(final_votes, key=lambda x: x[1], reverse=True)
-           
+            print(f"Final votes {final_votes}")
+            # Get the highest vote count
+            highest_vote_count = max(final_votes, key=lambda x: x[1])
+            print(f"Highest vote count: {highest_vote_count}")
+            winner_counter = 0
+            print("-----=====FINAL RESULT=====-----")
+            # Loop through the final votes list, and print out the result
             for name, votes in final_votes:
-                print("Here is the final result:")
-                print(f"{name}: {votes} votes")
+                # ('alice', 13) check if the highest vote count exist in the final votes list, add 1 to winner_counter
+                if highest_vote_count[1] == votes:
+                    winner_counter += 1
+                print(f"{name}: {votes} vote(s)")
 
-
+            print(f"Winner count: {winner_counter}")
+            if winner_counter > 1:
+                print("It's a draw between: ")
+                # Print out the draw candidates with the highest vote count
+                [print(f"{name}") for name, votes in final_votes if highest_vote_count[1] == votes]
+            else: 
+                print(f"The class president is ... {highest_vote_count[0]}")
+            
             done_adding = True
 
             # Save the candidates and votes to file
