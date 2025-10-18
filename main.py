@@ -12,21 +12,22 @@ while not done_adding:
     # If only 1 candidate entered
     if len(candidates) == 1:
         # Add the user for more suggestions
-        add_more = str(input("Add more candidate? Yes/No "))
+        add_more = str(input("Add another candidate? Yes/No "))
 
-        # No more candidates, exit program
-        if add_more.strip().lower() in ("no", "n"):
+        # If the answer is other than yes, exit program
+        if add_more.strip().lower() not in ("yes", "y"):
 
-            print(f"Only one candidate. The class president is {candidates[0]}. No need for democracy.")
+            print(f"Only one candidate. The class president is {candidates[0]}. No need for democracy or rigged elections.")
+            print("Exit program now...")
             done_adding = True
 
     else:
 
         # Add the user for more suggestions
-        add_more = str(input("Add more candidate? Yes/No "))
+        add_more = str(input("Add another candidate? Yes/No "))
 
-        # If no, randomize votes and save to file
-        if add_more.strip().lower() in ("no", "n"):
+        # If the answer is other than yes, randomize votes and save to file
+        if add_more.strip().lower() not in ("yes", "y"):
 
             # Set the votes list to 0 for all the candidates
             for c in candidates:
@@ -44,7 +45,11 @@ while not done_adding:
                 # Add one vote to a randomized votes element
                 votes[votes_element] += vote
 
-            print("Inside no")
+            
+            # Check the max votes
+            index = votes.index(max(votes))
+            print(f"The class president is: {candidates[index]}")
+
             done_adding = True
 
             # Save the candidates and votes to file
