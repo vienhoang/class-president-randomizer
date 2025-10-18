@@ -45,14 +45,21 @@ while not done_adding:
                 # Add one vote to a randomized votes element
                 votes[votes_element] += vote
 
-            
-            # Check the max votes
-            index = votes.index(max(votes))
-            print(f"The class president is: {candidates[index]}")
+            # Zip the both lists
+            final_votes = list(zip(candidates, votes))
+
+            """"
+            Sort the final votes after the candidate with the most votes [('alice', 11), ('bob', 10), ('celsius', 5)]
+            sort by the key which is a lambda function, the lambda x variable get its value for x[1] 
+            reverse=True so the function can sort from the highest to the lowest value
+            """
+            final_votes = sorted(final_votes, key=lambda x: x[1], reverse=True)
+           
+            for name, votes in final_votes:
+                print("Here is the final result:")
+                print(f"{name}: {votes} votes")
+
 
             done_adding = True
 
             # Save the candidates and votes to file
-
-
-    print(candidates, votes)
