@@ -4,11 +4,18 @@ done_adding = False
 # Save the candidates and votes to file
 def save_to_file(list_result):
     file_name = "results.txt"
+
+    # Save to file
     try:
         with open(file_name, "w") as f:
+            # Separate each line with \n at the end
             line = "\n".join(list_result)
             f.write(line)
-            print(f"The results have been saved to the file: {file_name}")
+            # Print out based on how many elements in the list_result
+            if len(list_result) == 1:
+                print(f"The result has been saved to the file: {file_name}")
+            else:
+                print(f"The results have been saved to the file: {file_name}")
     except FileNotFoundError:
         print("File not found.")
     except IOError:
@@ -36,11 +43,12 @@ def suggest_candidate():
 
             # If the answer is other than yes, exit program
             if add_more.strip().lower() not in ("yes", "y"):
-
-                print(f"Only one candidate. The class president is {candidates[0]}. No need for democracy or rigged elections.")
-                print("Exit program now...")
+                print_str = f"Only one candidate. The class president is {candidates[0]}. No need for democracy or rigged elections."
+                outputs.append(print_str)
+                print(print_str)
+                # Save the result to file
+                save_to_file(outputs)
                 done_adding = True
-
         else:
 
             # Add the user for more suggestions
@@ -74,10 +82,10 @@ def suggest_candidate():
                 reverse=True so the function can sort from the highest to the lowest value
                 """
                 final_votes = sorted(final_votes, key=lambda x: x[1], reverse=True)
-                #print(f"Final votes {final_votes}")
+                
                 # Get the highest vote count
                 highest_vote_count = max(final_votes, key=lambda x: x[1])
-                #print(f"Highest vote count: {highest_vote_count}")
+                
                 winner_counter = 0
                 print_str = "-----=====FINAL RESULT=====-----"
                 outputs.append(print_str)
@@ -110,6 +118,7 @@ def suggest_candidate():
                 # Save the result to file
                 save_to_file(outputs)
                 done_adding = True
+    print("Exit program now...")
 # Run the program
 def main():
     suggest_candidate()
