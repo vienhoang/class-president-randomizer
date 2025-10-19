@@ -14,8 +14,9 @@ It can be used for any kind of election in schools, colleges, or universities.
 
 ```bash
 git clone https://github.com/vienhoang/class-president-randomizer.git
-cd yourproject
+cd class-president-randomizer
 python main.py
+```
 
 ## License
 
@@ -24,4 +25,3 @@ Commercial use, resale, or redistribution is not allowed without written permiss
 
 ## Author
 Made by Vien Hoang – [GitHub-profil](https://github.com/vienhoang)
-
