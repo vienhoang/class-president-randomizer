@@ -1,5 +1,5 @@
 -----=====FINAL RESULT=====-----
-Bob: 48 vote(s)
-Alice: 40 vote(s)
-Celsius: 35 vote(s)
-The class president is ... Bob
+Alice: 4136 vote(s)
+Celsius: 4112 vote(s)
+Bob: 4097 vote(s)
+The class president is ... Alice
