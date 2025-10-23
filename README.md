@@ -18,6 +18,12 @@ cd class-president-randomizer
 python main.py
 ```
 
+## Installation
+```bash
+# Install dependencies (if needed)
+pip install -r requirements.txt
+```
+
 ## License
 
 You may use, modify, and share this code freely for non-commercial purposes.  
