@@ -30,4 +30,4 @@ You may use, modify, and share this code freely for non-commercial purposes.
 Commercial use, resale, or redistribution is not allowed without written permission.
 
 ## Author
-Made by Vien Hoang – [GitHub-profil](https://github.com/vienhoang)
+Made by Vien Hoang | [Linkedin](https://www.linkedin.com/in/vien-hoang-5077bb96/) | [GitHub](https://github.com/vienhoang)
