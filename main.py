@@ -1,5 +1,27 @@
+# For ascii banner
+import pyfiglet
+# For randomizing
 import random
+# Coloring text
+from colorama import init, Fore
+# done adding candidate variable
 done_adding = False
+
+# Init colors
+init()
+GREEN = Fore.GREEN
+MAGENTA =Fore.MAGENTA
+BLUE = Fore.BLUE
+RESET = Fore.RESET
+GRAY = Fore.LIGHTBLACK_EX
+
+# Create ascii banner
+def create_ascii(str):
+    ascii_banner = pyfiglet.figlet_format(str)
+    print(f"{GREEN}*" * 75)
+    print(ascii_banner)
+    print("*" * 75 + "\n")
+
 
 # Save the candidates and votes to file
 def save_to_file(list_result):
@@ -121,6 +143,7 @@ def suggest_candidate():
     print("Exit program now...")
 # Run the program
 def main():
+    create_ascii("Class President Randomizer")
     suggest_candidate()
 
 if __name__ == "__main__":
