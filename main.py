@@ -10,10 +10,6 @@ done_adding = False
 # Init colors
 init()
 GREEN = Fore.GREEN
-MAGENTA =Fore.MAGENTA
-BLUE = Fore.BLUE
-RESET = Fore.RESET
-GRAY = Fore.LIGHTBLACK_EX
 
 # Create ascii banner
 def create_ascii(str):
